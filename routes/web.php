@@ -1,6 +1,8 @@
 <?php
 
 // use App\Categoria;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
