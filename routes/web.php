@@ -32,13 +32,29 @@ Route::post('categorias/update' , "CategoriaController@update");
 
 
 
+// Ruta para guardar cambios de Pelicula
+Route::get("peliculas" , "PeliculaController@index");
 
+Route::get("acordeon", function (){
+    // seleccionar todas las categorias
+    $categorias = App\Categoria::all();
+    // meter las categorias a la vista
+    return view('peliculas.acordeon')
+                ->with("categorias" , $categorias);
+});
 
+Route::get("tabs", function () {
 
+    $categorias = App\Categoria::all();
 
+    return view('peliculas.tabs') 
+                ->with("categorias" , $categorias);
+    
+});
 
-
-
+Route::get('clientes/jsoncities/{id_pais}' , "LocationController@jsoncities");
+Route::get('clientes/create' , "ClienteController@create");
+Route::post("clientes/store", "ClienteController@store"); 
 
 
 
@@ -114,3 +130,7 @@ Route::post('categorias/update' , "CategoriaController@update");
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
